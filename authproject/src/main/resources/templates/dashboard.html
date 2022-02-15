@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{default}">
+    <head>
+        <title>Dashboard</title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <table>
+                <thead>
+                    <tr>
+                        <th> Full Name </th>
+                        <th> Email Address </th>
+                        <th> Delete</th>
+                        <th> Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:if="${userList.empty}">
+                        <td colspan="2"> No users Available </td>
+                    </tr>
+                    <tr th:each="user : ${userList}">
+                        <td th:text="${user.fullname}"></td>
+                        <td th:text="${user.email}"></td>
+                        <td>
+                            <a th:href="@{/delete/{id}(id=${user.id})}">Delete</a>  
+                        </td>
+                        <td>
+                            <a th:href="@{/edit/{id}(id=${user.id})}">Edit</a>  
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
