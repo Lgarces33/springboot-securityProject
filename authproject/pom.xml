@@ -16,6 +16,31 @@
 	<properties>
 		<java.version>11</java.version>
 	</properties>
+         <build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		
+                                    <plugin>
+                                        <groupId>com.luis</groupId>
+                                        <artifactId>docker-maven-plugin</artifactId>
+                                        <version>0.4.10</version>
+                                    <configuration>
+                                         <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+                                        <dockerDirectory>src/main/docker</dockerDirectory>
+                                    <resources>
+                                        <resource>
+                                         <targetPath>/</targetPath>
+                                         <directory>${project.build.directory}</directory>
+                                         <include>${project.build.finalName}.jar</include>
+                                       </resource>
+                                    </resources>
+                                    </configuration>
+                                    </plugin>
+                                    </plugins>
+	</build>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -60,31 +85,6 @@
 	  <version>3.0.0</version>
 	  <type>jar</type>
 	 </dependency>
-	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-                                    <plugin>
-                                        <groupId>com.luis</groupId>
-                                        <artifactId>docker-maven-plugin</artifactId>
-                                        <version>0.4.10</version>
-                                    <configuration>
-                                         <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
-                                        <dockerDirectory>src/main/docker</dockerDirectory>
-                                    <resources>
-                                        <resource>
-                                         <targetPath>/</targetPath>
-                                         <directory>${project.build.directory}</directory>
-                                         <include>${project.build.finalName}.jar</include>
-                                       </resource>
-                                    </resources>
-                                    </configuration>
-                                    </plugin>
-	</build>
-
+  	</dependencies>
+       
 </project>
