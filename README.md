@@ -7,4 +7,7 @@ minikube service authproject --url
 
 then it´ll just be a copy and paste of the address into your browser to run.
 
+Here´s the address for the example running on a google cloud cluster:
+http://34.121.154.207/
+
 Happy coding :)!!!!
