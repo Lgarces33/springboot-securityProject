@@ -1,5 +1,5 @@
 # springboot-securityProject
-A webapp focusing on the usage of Springboot Security
+A webapp focusing on the usage of Springboot Security, it uses MongoDB.
 
 The project is ready to be deployed to a Kubernetes cluster and is just a matter of request the url of the pod, in the case you´re running Minikube you could run this command in order to expose the service provided by authproject:
 
